@@ -1,0 +1,79 @@
+use('fm_mongo');
+
+// db.createCollection('manufactures', {
+//     validator: {
+//         $jsonSchema: {
+//             bsonType: 'object',
+//             required: ['name'],
+//             properties: {
+//                 name: {
+//                     bsonType: 'string'
+//                 }
+//             }
+//         }
+//     }
+// });
+// db.manufactures.insertMany([{name:'M1'}, {name:'M2'}, {name:'M3'}])
+////6200c87816577abc9bfce699 // такие id получились у преподавателя
+////6200c87816577abc9bfce69a
+////6200c87816577abc9bfce69b
+
+// db.createCollection('products', {
+//         validator: {
+//         $jsonSchema: {
+//             bsonType: 'object',
+//             required: ['name', 'price', 'amount', 'manId'],
+//             properties: {
+//                 name: {
+//                     bsonType: 'string'
+//                 },
+//                 properties: {
+//                     bsonType: 'decimal'
+//                 },
+//                 amount: {
+//                     bsonType: 'int'
+//                 },
+//                 manId: {
+//                     bsonType: 'objectId'
+//                 }
+//             }
+//         }
+//     }
+// })
+// db.products.insertMany([{
+//    { name:'Milk', price: 20.5, amount: 100, manId: new ObjectId('6200c87816577abc9bfce699')},
+//    { name:'Coffee', price: 37.8, amount: 200, manId: new ObjectId('6200c87816577abc9bfce69a')},
+//    { name:'Tea', price: 33.5, amount: 150, manId: new ObjectId('6200c87816577abc9bfce69b')}
+// }])
+
+// db.products.aggregate([{
+//     $lookup: {
+//         from: 'manufactures',
+//         localField: 'manId',
+//         foreignField: '_id',
+//         as: 'manufacture'
+//     }
+// },
+// {
+//     $unwind: '$manufacture'
+// },
+// {
+//     $unset: 'manufacture._id'
+// }
+// ])
+
+// db.products.aggregate([{
+//     $group: {
+//         _id: '$manId',
+//         countPos: { $sum: 1 }
+//     }
+// }])
+
+db.products.aggregate([
+    {
+    $sort: {amount: -1}
+    },
+    {
+    $limit: 10
+    },
+])

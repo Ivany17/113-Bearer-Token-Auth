@@ -1,0 +1,6 @@
+PATCH http://localhost:3000/6200c87816577abc9bfce69b HTTP/1.1
+Content-Type: application/json
+
+{
+    "description": "New task!",
+}

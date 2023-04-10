@@ -1,0 +1,21 @@
+{
+  "name": "mongodb-crud.-schema-validator.-mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prettier-standard": "^16.4.1"
+  }
+}
